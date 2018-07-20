@@ -42,6 +42,8 @@
         - chrome-gnome-shell
         - gimp
         - virtualbox
+        - build-essential
+        - libssl-dev
     
     - name: Clone oh-my-zsh repo
       git:
