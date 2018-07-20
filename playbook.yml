@@ -1,0 +1,76 @@
+---
+- hosts: 127.0.0.1
+  become: yes
+  connection: local
+  gather_facts: no
+  vars_files:
+    - vars.yml
+  
+  tasks:
+    - name: Update apt cache if needed
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Upgrade packages to the latest version
+      apt:
+        upgrade: dist
+
+    - name: Install Ansible dependencies
+      apt: "name={{ item }} state=present"
+      with_items:
+        - python-apt
+        - python-pycurl
+    
+    - name: Install packages
+      apt: "name={{ item }} state=present"
+      with_items:
+        - git
+        - curl
+        - wget
+        - vim
+        - zsh
+        - terminator
+        - powerline
+        - gnome-tweak-tool
+        - openjdk-8-jdk
+        - openjfx
+        - chromium-browser
+        - geany
+        - mpv
+        - ubuntu-restricted-extras
+        - chrome-gnome-shell
+        - gimp
+        - virtualbox
+    
+    - name: Clone oh-my-zsh repo
+      git:
+        repo=https://github.com/robbyrussell/oh-my-zsh.git
+        dest=/home/{{ user }}/.oh-my-zsh
+        
+    - name: Copy .zshrc
+      template:
+        src: "templates/zshrc"
+        dest: "/home/{{user}}/.zshrc"
+        force: no
+    
+    - name: Set proper ownership of oh-my-zsh files
+      file:
+        path: "/home/{{user}}/.oh-my-zsh"
+        owner: "{{user}}"
+        group: "{{user}}"
+        recurse: yes
+
+    - name: Set zsh as default shell
+      user:
+        name={{ user }}
+        shell=/bin/zsh
+    
+    - name: Download vagrant installer
+      get_url: 
+        url: https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.deb
+        dest: "/home/{{user}}/Downloads/vagrant.deb"
+      
+    - name: Install vagrant
+      apt: 
+        deb: "/home/{{user}}/Downloads/vagrant.deb"
