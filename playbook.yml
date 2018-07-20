@@ -44,6 +44,10 @@
         - virtualbox
         - build-essential
         - libssl-dev
+        - nfs-kernel-server
+        - psensor
+        - hardinfo
+        - xclip
     
     - name: Clone oh-my-zsh repo
       git:
