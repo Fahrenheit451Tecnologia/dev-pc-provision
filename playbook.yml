@@ -48,6 +48,7 @@
         - psensor
         - hardinfo
         - xclip
+        - cpufrequtils
     
     - name: Clone oh-my-zsh repo
       git:
@@ -58,6 +59,8 @@
       template:
         src: "templates/zshrc"
         dest: "/home/{{user}}/.zshrc"
+        owner: "{{user}}"
+        group: "{{user}}"
         force: no
     
     - name: Set proper ownership of oh-my-zsh files
