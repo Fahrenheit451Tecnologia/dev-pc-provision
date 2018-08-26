@@ -33,12 +33,11 @@
         - terminator
         - powerline
         - gnome-tweak-tool
-        - openjdk-8-jdk
+        - openjdk-11-jdk
         - openjfx
         - chromium-browser
         - geany
         - mpv
-        - ubuntu-restricted-extras
         - chrome-gnome-shell
         - gimp
         - virtualbox
