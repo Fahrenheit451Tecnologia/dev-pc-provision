@@ -1,5 +1,32 @@
 ---
 timezone: America/Bogota
 locale: es_CO.UTF-8
-user: daniel
+user: retimeradm
 zsh_theme: agnoster
+packages_tm:
+  - git
+  - curl
+  - wget
+  - vim
+  - zsh
+  - terminator
+  - powerline
+  - gnome-tweak-tool
+  - openjdk-8-jdk
+  - openjfx
+  - chromium-browser
+  - geany
+  - mpv
+  - chrome-gnome-shell
+  - gimp
+  - virtualbox
+  - build-essential
+  - libssl-dev
+  - nfs-kernel-server
+  - psensor
+  - hardinfo
+  - xclip
+  - cpufrequtils
+packages_ansible:
+  - python-apt
+  - python-pycurl

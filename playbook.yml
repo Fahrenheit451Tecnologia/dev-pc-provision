@@ -17,38 +17,15 @@
         upgrade: dist
 
     - name: Install Ansible dependencies
-      apt: "name={{ item }} state=present"
-      with_items:
-        - python-apt
-        - python-pycurl
-    
+      apt:
+        pkg: "{{ packages_ansible }}"
+        state: present
+
     - name: Install packages
-      apt: "name={{ item }} state=present"
-      with_items:
-        - git
-        - curl
-        - wget
-        - vim
-        - zsh
-        - terminator
-        - powerline
-        - gnome-tweak-tool
-        - openjdk-11-jdk
-        - openjfx
-        - chromium-browser
-        - geany
-        - mpv
-        - chrome-gnome-shell
-        - gimp
-        - virtualbox
-        - build-essential
-        - libssl-dev
-        - nfs-kernel-server
-        - psensor
-        - hardinfo
-        - xclip
-        - cpufrequtils
-    
+      apt:
+        pkg: "{{ packages_tm }}"
+        state: present
+
     - name: Clone oh-my-zsh repo
       git:
         repo=https://github.com/robbyrussell/oh-my-zsh.git
@@ -76,7 +53,7 @@
     
     - name: Download vagrant installer
       get_url: 
-        url: https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.deb
+        url: https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
         dest: "/home/{{user}}/Downloads/vagrant.deb"
       
     - name: Install vagrant
