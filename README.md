@@ -12,7 +12,7 @@ sudo apt install ansible
 4. Modify `vars.yml` accordingly
 4. Run playbook
 ```bash
-ansible-playbook -K playbook
+ansible-playbook -K playbook.yml
 ```
 
 *Enjoy*
