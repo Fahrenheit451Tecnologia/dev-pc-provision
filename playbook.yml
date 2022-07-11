@@ -16,10 +16,27 @@
       apt:
         upgrade: dist
 
-    - name: Install Ansible dependencies
-      apt:
-        pkg: "{{ packages_ansible }}"
+    - name: Add Vagrant apt repository key
+      apt_key:
+        url: https://apt.releases.hashicorp.com/gpg
         state: present
+
+    - name: Add Vagrant apt repository
+      apt_repository:
+        repo: deb [arch=amd64] https://apt.releases.hashicorp.com jammy main
+        state: present
+        update_cache: yes
+
+    - name: Add Docker apt repository key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker apt repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable
+        state: present
+        update_cache: yes
 
     - name: Install packages
       apt:
@@ -50,12 +67,14 @@
       user:
         name={{ user }}
         shell=/bin/zsh
-    
-    - name: Download vagrant installer
-      get_url: 
-        url: https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
-        dest: "/home/{{user}}/Downloads/vagrant.deb"
-      
-    - name: Install vagrant
-      apt: 
-        deb: "/home/{{user}}/Downloads/vagrant.deb"
+
+    - name: Ensure group "docker" exists
+      group:
+        name: docker
+        state: present
+        
+    - name: Add the user to docker group
+      user:
+        name: "{{ user }}"
+        group: docker
+

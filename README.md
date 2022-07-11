@@ -2,9 +2,7 @@ Instructions
 ------------
 
 1. Install Ansible
-Add official PPA: 
 ```bash
-sudo add-apt-repository ppa:ansible/ansible
 sudo apt install ansible
 ```
 2. Download and unzip [repository](https://github.com/Fahrenheit451Tecnologia/dev-pc-provision/archive/master.zip)

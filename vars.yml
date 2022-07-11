@@ -1,20 +1,20 @@
 ---
 timezone: America/Bogota
 locale: es_CO.UTF-8
-user: retimeradm
+user: daniel
 zsh_theme: agnoster
 packages_tm:
   - git
+  - git-flow
   - curl
   - wget
   - vim
   - zsh
   - terminator
   - powerline
-  - gnome-tweak-tool
-  - openjdk-8-jdk
+  - gnome-tweaks
+  - default-jdk
   - openjfx
-  - chromium-browser
   - geany
   - mpv
   - chrome-gnome-shell
@@ -27,6 +27,15 @@ packages_tm:
   - hardinfo
   - xclip
   - cpufrequtils
+  - vagrant
+  - ca-certificates
+  - curl
+  - gnupg
+  - lsb-release
+  - docker-ce 
+  - docker-ce-cli 
+  - containerd.io 
+  - docker-compose-plugin
 packages_ansible:
   - python-apt
   - python-pycurl
