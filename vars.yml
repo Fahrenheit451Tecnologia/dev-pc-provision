@@ -34,7 +34,8 @@ packages_tm:
   - lsb-release
   - docker-ce 
   - docker-ce-cli 
-  - containerd.io 
+  - containerd.io
+  - docker-compose
   - docker-compose-plugin
 packages_ansible:
   - python-apt
